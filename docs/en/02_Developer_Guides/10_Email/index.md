@@ -14,15 +14,20 @@ covers how to create an `Email` instance, customise it with a HTML template, the
 Silverstripe CMS provides an API over the top of the [SwiftMailer](http://swiftmailer.org/) PHP library which comes with an
 extensive list of "transports" for sending mail via different services. 
 
-Out of the box, Silverstripe CMS will use the built-in PHP `mail()` command via the `Swift_MailTransport` class. If you'd
-like to use a more robust transport to send mail you can swap out the transport used by the `Mailer` via config:
+Out of the box, Silverstripe CMS will use the built-in PHP `mail()` command via the `Swift_MailTransport` class.
+
+It's highly recommended you upgrade to a more robust transport to send mail for additional security.
+
+To swap out the transport used by the `Mailer`, create a file `app/_config/email.yml`
+
+To use a `sendmail` binary:
 
 ```yml
 SilverStripe\Core\Injector\Injector:
   Swift_Transport: Swift_SendmailTransport
 ```
 
-For example, to use SMTP, create a file `app/_config/email.yml`:
+To use SMTP:
 
 ```yml
 ---
